@@ -6,56 +6,110 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>js-2 task</h1>
     <script>
-      let year = 2027;
-      let numberChildren = 3;
-      let motherName = "Südabə";
-      let fatherName = "Elgiz";
-      let job = "Developer";
-      console.log(
-        "You will be a " +
-          job +
-          " in " +
-          2025 +
-          ",and married to " +
-          fatherName +
-          " with " +
-          numberChildren +
-          " kids"
+      const bigNumber = 5;
+      const littleNumber = 8;
+
+      if (bigNumber > littleNumber) {
+        console.log(`${bigNumber} Böyükdür ${littleNumber}-dən`);
+      } else {
+        console.log(`${bigNumber} Kiçiktir ${littleNumber}-dən`);
+      }
+
+      let language = "aze";
+      if (language == "en") {
+        console.log("Hello");
+      } else if (language == "tr") {
+        console.log("Selam");
+      } else if (language == "aze") {
+        console.log("Salam");
+      } else {
+        console.log(
+          "Bilinməyən dil | en , tr , aze | bu dillərdən istifadə edin."
+        );
+      }
+
+      let score = prompt("Balınızı qeyd edin.");
+      if (score >= 91) {
+        console.log("A");
+        alert("Əjdahasan.");
+      } else if (score >= 80 && score <= 90) {
+        console.log("B");
+      } else if (score >= 60 && score < 80) {
+        console.log("C");
+      } else if (score >= 45 && score < 60) {
+        console.log("D");
+      } else if (score > 0 && score < 45) {
+        console.log("F");
+        alert("Kəsildiniz.");
+      } else {
+        alert("Balınızı qeyd etmədiniz.");
+      }
+
+      const noun = prompt("Will you adopt a cat or a dog?");
+      if (noun === "cat" || noun === "dog") {
+        const number = prompt("How many do you want?");
+        let result;
+
+        if (number == 1) {
+          result = `You have adopted ${number} lovely ${noun}.`;
+        } else if (number > 1) {
+          result = `You have adopted ${number} lovely ${noun}s.`;
+        } else {
+          result = `You must write at least 1`;
+        }
+
+        alert(result);
+      } else {
+        const result =
+          "Unfortunately we don't have the animal you want, goodbye";
+        alert(result);
+      }
+
+      let resultadmin = prompt("Who Are You?");
+      if (resultadmin == "user") {
+        alert("Logins are closed for the user.");
+      } else if (resultadmin == "admin") {
+        var password = prompt("Login Your admin Password");
+        if (password == 1312) {
+          alert("Welcome Admin");
+        } else {
+          alert("Wrong Password");
+        }
+      }
+
+      let operation = prompt(
+        "What operation do you want to perform? (+ , - , * , /)"
       );
-
-      var birthdate = "1998";
-      var present = "2024";
-      var future = "2025";
-      var result = future - birthdate;
-      console.log(result);
-
-      let maximumAge = 100;
-      let currentAge = 29;
-      let amountPerDay = 3;
-      let yearsRemaining = maximumAge - currentAge;
-      let total = yearsRemaining * 365 * amountPerDay;
-      console.log(
-        "You will need " +
-          total +
-          " to last you until the ripe old age of " +
-          maximumAge +
-          "."
-      );
-
-      let r = 3;
-      let circumference = 2 * Math.PI * r;
-      let area = Math.PI * r * r;
-      console.log(
-        "The circumference is " + circumference + " The area is " + area
-      );
-
-      let celsi = 13;
-      let frht = (celsi * 9) / 5 + 32;
-      console.log(celsi + "°C" + " is " + frht + "°F");
-      let Frht = 26;
-      let Celsi = (5 / 9) * (Frht - 32);
-      console.log(Frht + "°F" + " is " + Celsi + "°C");
+      let number1 = +prompt("Enter the first number:");
+      let number2 = +prompt("Enter the second number:");
+      let result;
+      switch (operation) {
+        case "+":
+          result = number1 + number2;
+          console.log(`Result: ${number1} + ${number2} = ${result}`);
+          break;
+        case "-":
+          result = number1 - number2;
+          console.log(`Result: ${number1} - ${number2} = ${result}`);
+          break;
+        case "*":
+          result = number1 * number2;
+          console.log(`Result: ${number1} * ${number2} = ${result}`);
+          break;
+        case "/":
+          if (number2 !== 0) {
+            result = number1 / number2;
+            console.log(`Result: ${number1} / ${number2} = ${result}`);
+          } else {
+            console.log("There is no division by zero!");
+          }
+          break;
+        default:
+          console.log("You have selected the wrong operation!");
+          break;
+      }
     </script>
   </body>
 </html>
