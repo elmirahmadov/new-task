@@ -3,113 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Task</title>
   </head>
   <body>
-    <h1>js-2 task</h1>
+    <h1>Task</h1>
     <script>
-      const bigNumber = 5;
-      const littleNumber = 8;
-
-      if (bigNumber > littleNumber) {
-        console.log(`${bigNumber} Böyükdür ${littleNumber}-dən`);
+      // 1 task
+      let array1 = [1, 2, 3]; // birinci arrayımız.
+      let array2 = [2, 30, 1]; // ikinci arrayımız.
+      let result = array1.concat(array2); // iki arrayın birləşməsi üçün yeni array yaradır.
+      console.log(result); // consolumuz.
+      // 2 task
+      let list = [1, 2, 3, [4], [5], 6, [7]]; // list adlı arrayımızın daxilində başqa arraylarımız var.
+      let result1 = list.flat(1); // burada isə daxilindəki arrayları tək bir arrayın içərisində çıxarırıq.
+      console.log(result1); // consolumuz.
+      // 3 task
+      let list1 = [7, 9, 0, -2]; // birinci arrayımız
+      let list2 = [[1], 3]; // ikinci arrayımız
+      let result3 = list1.slice(0, 1)[0]; // sıfır və birinci indeks arasındaki olan elementləri alır və [0] 7 olaraq daxilinə mənimsədir.
+      let result4 = list2.slice(0, 1)[0]; // sıfır və birinci indeks arasındaki olan elementləri alır və [0] [1] olaraq daxilinə mənimsədir.
+      console.log(result3); // consolumuz
+      console.log(result4); // consolumuz
+      // 4 task
+      let list3 = [9, 9, 9, 4, 6, 2]; // Ilk arrayımız
+      let result5 = list3.join("-"); //
+      console.log(result5); // consolumuz.
+      // 5 task
+      let student_list = ["John", "Marry", "Ali", "Sophia"]; // şagirdlərimizin yazılı olduğu arrayımız.
+      let studentName = "John";
+      if (student_list.includes(studentName)) {
+        // əgər bu şagird yuxarıdaki arrayımızda varsa konsola "Şagirdimiz listəmizdə var." adlı mesajı göndərir.
+        console.log("Şagird listəmizdə var.");
       } else {
-        console.log(`${bigNumber} Kiçiktir ${littleNumber}-dən`);
+        // əgər yoxdursa "Şagird listəmizdə yoxdur." konsola mesajını göndərir.
+        console.log("Şagird listəmizdə yoxdur.");
       }
-
-      let language = "aze";
-      if (language == "en") {
-        console.log("Hello");
-      } else if (language == "tr") {
-        console.log("Selam");
-      } else if (language == "aze") {
-        console.log("Salam");
+      // 6 task
+      let student_list1 = ["John", "Marry", "Ali", "Sophia"]; // şagirdlərimizin yazılı olduğu arrayımız.
+      console.log(student_list1);
+      let studentName1 = "Elmir";
+      if (student_list1.includes(studentName1)) {
+        console.log("Şagird listəmizdə var."); // əgər bu şagird yuxarıdaki arrayımızda varsa konsola "Şagirdimiz listəmizdə var." adlı mesajı göndərir.
       } else {
-        console.log(
-          "Bilinməyən dil | en , tr , aze | bu dillərdən istifadə edin."
-        );
+        student_list1.push(studentName1);
+        console.log(studentName1, "adlı şagirdimiz listəyə əlavə olundu."); // əgər yoxdursa həmin şagirdi listəyə əlavə edir.
       }
-
-      let score = prompt("Balınızı qeyd edin.");
-      if (score >= 91) {
-        console.log("A");
-        alert("Əjdahasan.");
-      } else if (score >= 80 && score <= 90) {
-        console.log("B");
-      } else if (score >= 60 && score < 80) {
-        console.log("C");
-      } else if (score >= 45 && score < 60) {
-        console.log("D");
-      } else if (score > 0 && score < 45) {
-        console.log("F");
-        alert("Kəsildiniz.");
-      } else {
-        alert("Balınızı qeyd etmədiniz.");
-      }
-
-      const noun = prompt("Will you adopt a cat or a dog?");
-      if (noun === "cat" || noun === "dog") {
-        const number = prompt("How many do you want?");
-        let result;
-
-        if (number == 1) {
-          result = `You have adopted ${number} lovely ${noun}.`;
-        } else if (number > 1) {
-          result = `You have adopted ${number} lovely ${noun}s.`;
-        } else {
-          result = `You must write at least 1`;
-        }
-
-        alert(result);
-      } else {
-        const result =
-          "Unfortunately we don't have the animal you want, goodbye";
-        alert(result);
-      }
-
-      let resultadmin = prompt("Who Are You?");
-      if (resultadmin == "user") {
-        alert("Logins are closed for the user.");
-      } else if (resultadmin == "admin") {
-        var password = prompt("Login Your admin Password");
-        if (password == 1312) {
-          alert("Welcome Admin");
-        } else {
-          alert("Wrong Password");
-        }
-      }
-
-      let operation = prompt(
-        "What operation do you want to perform? (+ , - , * , /)"
-      );
-      let number1 = +prompt("Enter the first number:");
-      let number2 = +prompt("Enter the second number:");
-      let result;
-      switch (operation) {
-        case "+":
-          result = number1 + number2;
-          console.log(`Result: ${number1} + ${number2} = ${result}`);
-          break;
-        case "-":
-          result = number1 - number2;
-          console.log(`Result: ${number1} - ${number2} = ${result}`);
-          break;
-        case "*":
-          result = number1 * number2;
-          console.log(`Result: ${number1} * ${number2} = ${result}`);
-          break;
-        case "/":
-          if (number2 !== 0) {
-            result = number1 / number2;
-            console.log(`Result: ${number1} / ${number2} = ${result}`);
-          } else {
-            alert("There is no division by zero!");
-          }
-          break;
-        default:
-          console.log("You have selected the wrong operation!");
-          break;
-      }
+      console.log(student_list1);
+      // 7 task
+      let array3 = [1, 2, 3, 4, 5]; // ilk arrayımız
+      let result6 = array3.reverse(); // reverse istifadə edəndə arrayı sağdan sola doğru yəni tərsinə sıralayır.
+      console.log(result6); // consolumuz.
+      // 8 task
+      let array4 = [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+      ]; // ilk
+      let result7 = array4.flat(1); // flat daxilindəki arrayları açmağımıza kömək edir (1) yazdıqda 1 dəfə yoxlayır burada 1 yazmağımız kifayətdir.
+      console.log(result7); // consolumuz.
+      // 9 task
+      let list4 = ["John", "Katy", "Simson"];
+      console.log(list4[2], "adlı şagird sıralamada axırıncı sıradadır."); // list4[2] burada ki 2 yəni sıra olarak 0,1,2 sırasındaki şagirdi konsola göstərməyimizə kömək edir.
+      // 10 task
+      let list5 = [1, 2, 3, 4, 5, 2];
+      let result8 = list5[1]; // yuxarıda ki arrayda 2 rəqəmini seçməyimizə kömək edir.
+      console.log(result8); // consolumuz
     </script>
   </body>
 </html>
