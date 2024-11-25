@@ -1,83 +1,81 @@
-// task 1
-let text = "hello";
+// Task 1
 
-let textlength = text.length;
-
-console.log(textlength); // burada Hello yazısının hərif uzunluğunu göstərir.
-
-// task 2
-
-const element = 4;
-
-const el = 11;
-
-const arr = Array(element).fill(el);
-
-console.log(arr); // burada el dəyərini elementdəki say qədər Arrayın daxilində yazır. [11, 11, 11, 11]
-
-// task 3
-
-let text1 = "Javascript";
-
-console.log(text1[0].toUpperCase() + text1.slice(1)); // burada toUpperCase text1-in sıfırıncı indexsini böyük hərf etməyimizdə kömək edir.
-//daha sorna isə həmin yazınən 1ci indexinə qədər 1 daxil olmamaq şərti ilə silib avascript yazısını ilk dəyər J nin dəvamında qeyd edirik və Javascript yazısını alırıq.
-
-// task 4
-
-let name1 = "John doe";
-
-console.log(name1.toUpperCase());
-
-// task 5
-
-let weather = "Today is a sunny day.";
-
-// Expected Result: "Today is a rainy day"
-
-let nowWeather = weather.replace("sunny", "rainy"); // replace ilk dəyəri ikinci dəyər ilə dəyişdirir.
-
-console.log(nowWeather);
-
-// task 6
-
-let text2 = "Javascript is a funny language";
-
-console.log(text2.split(" ")); // ['Javascript', 'is', 'a', 'funny', 'language']
-
-// task 7
-
-let fruits = ["Apple", "Banana", "Mango"];
-console.log(fruits);
-let searchedFruit = "Orange";
-fruits.push(searchedFruit);
-
-if (fruits.includes(searchedFruit)) {
-  console.log("Found the fruit");
-} else {
-  console.log("Not found the fruit");
+let arr = [1, 2, 3, 4];
+let sum = 0;
+for (let num of arr) {
+  sum += num;
 }
-console.log(fruits);
+console.log(sum); // Output: 10
 
-// task 8
+// Task 2
 
-let firstName = ["john", "Jane"];
-let lastName = ["Doe", "Smith"];
+let number = 5;
 
-let newarr = firstName.concat(lastName);
-newarr.pop();
-newarr.shift();
+let factorial = 1;
 
-console.log(newarr);
+for (let i = 1; i <= number; i++) {
+  factorial *= i;
+}
 
-// task 9
+console.log(factorial); // Output: 120
 
-let text3 = "JavaScript";
-let result = text3.split("");
+// Task 3
 
-console.log(result.reverse().join(""));
+let arr3 = [3, 7, 2, 8, 5];
+let max = arr3[0];
 
-// task 10
+for (let i = 0; i <= arr3.length; i++) {
+  let element = arr3[i];
+  if (element > max) max = element;
+}
 
-let fruits1 = ["Apple", "Banana", "Mango", "Orange"];
+console.log(max); // Output: 8
 
-console.log(fruits1.indexOf("Banana"));
+// Task 4
+
+let str = "Hello"; // stringimiz
+let newStr = ""; // boş stringimiz
+
+for (let i = str.length - 1; i >= 0; i--) {
+  // Hello yazısını tərsdən sıralayır
+  newStr += str[i]; // o l l e H olaraq boş stringinin içərisinə doldurur.
+}
+
+console.log(newStr); // Output: olleH
+
+// Task 5 Method 1
+
+let numbers1 = [7, 4, 9, 32, 11, 23];
+for (let j = 0; j < numbers1.length; j++) {
+  let number2 = numbers1[j];
+  let isPrime1 = number2 > 1;
+  for (let i = 2; i < number2; i++) {
+    if (number2 % i === 0) {
+      isPrime1 = false;
+      break;
+    }
+  }
+  console.log(`${number2} is prime: ${isPrime1}`);
+}
+
+// Task 5 Method 2
+
+let numbers = [1, 7, 4, 9, 32, 11, 23, 27, 50];
+for (let i = 0; i < numbers.length; i++) {
+  let number = numbers[i];
+  if (number <= 1) {
+    console.log(`${number} ne sadedir ne murekkeb`);
+    continue;
+  }
+  let isPrime = true;
+  for (let j = 2; j < number; j++) {
+    if (number % j == 0) {
+      console.log(`${number} murekkebdir`);
+      isPrime = false;
+      break;
+    }
+  }
+  if (isPrime) {
+    console.log(`${number} sadedir`);
+  }
+}
