@@ -25,11 +25,11 @@ const hiddenWords = guessWords.split("").map(function () {
 while (hiddenWords.includes("_")) {
   console.log(`Your secret word:  ${hiddenWords.join(" ")}`);
 
-  const letter = prompt("Enter your letter");
+  const letter = prompt(`Enter your letter: ${hiddenWords.join(" ")}`);
 
   let found = false;
   for (let i = 0; i < guessWords.length; i++) {
-    if (guessWords[i] === letter) {
+    if (guessWords[i].toLowerCase() === letter.toLowerCase()) {
       hiddenWords[i] = letter;
       found = true;
     }
