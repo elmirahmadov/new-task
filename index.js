@@ -69,6 +69,7 @@ function multiplicationTable(num) {
 }
 
 multiplicationTable(5);
+console.log("--------------------------");
 
 function multiplicationTable1(num) {
   for (let i = 1; i <= num; i++) {
@@ -78,6 +79,7 @@ function multiplicationTable1(num) {
 multiplicationTable1(10);
 
 // Task 5
+console.log("--------------------------");
 
 function fizzBuzz(num) {
   for (let i = 1; i <= num; i++) {
@@ -93,3 +95,4 @@ function fizzBuzz(num) {
   }
 }
 fizzBuzz(15);
+console.log("--------------------------");
