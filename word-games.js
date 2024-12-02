@@ -23,7 +23,7 @@ const hiddenWords = guessWords.split("").map(function () {
 });
 
 while (hiddenWords.includes("_")) {
-  console.log(`Your secret word:  ${hiddenWords.join(" ")}`);
+  alert(`Your secret word:  ${hiddenWords.join(" ")}`);
 
   const letter = prompt(`Enter your letter: ${hiddenWords.join(" ")}`);
 
@@ -36,10 +36,10 @@ while (hiddenWords.includes("_")) {
   }
 
   if (!found) {
-    console.log("Letter not found.");
+    alert("Letter not found.");
   }
 
-  console.log(hiddenWords.join(" "));
+  alert(hiddenWords.join(" "));
 }
 
-console.log("Congratulations, you found it!");
+alert("Congratulations, you found it!");
