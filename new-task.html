@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // TASK 1
+      const A = function (name) {
+        return function () {
+          console.log(`Hello ${name}`);
+        };
+      };
+      let greeting = A("Elmir");
+      greeting();
+      let greeting1 = A("Musa");
+      greeting1();
+      // TASK 2
+      const createCounter = function (count) {
+        function counter() {
+          return count++;
+        }
+        return counter;
+      };
+      // TASK 3
+      const myCounter = createCounter(13);
+      console.log(myCounter());
+      myCounter();
+      myCounter();
+      myCounter();
+      myCounter();
+      console.log(myCounter());
+      // TASK 4
+      const B = function (number1) {
+        function C(number2) {
+          return number1 * number2;
+        }
+        return C;
+      };
+      let result = B(13);
+      console.log(result(5));
+      console.log(result(6));
+      // TASK 5
+      function constVowels(str) {
+        const vowels = "aıoueəiöüAIOUEƏİÖÜ";
+
+        const vowelArray = str.split("").filter((AEI) => vowels.includes(AEI));
+
+        return vowelArray.length;
+      }
+      console.log(constVowels("Elmir"));
+      // TASK 6
+      const isPalindrome = (str) => {
+        let reversed = str.split("").reverse().join("");
+        return str === reversed;
+      };
+      console.log(isPalindrome("level"));
+      console.log(isPalindrome("test"));
+    </script>
+  </body>
+</html>
