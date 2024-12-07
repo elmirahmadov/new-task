@@ -7,57 +7,87 @@
   </head>
   <body>
     <script>
-      // TASK 1
-      const A = function (name) {
-        return function () {
-          console.log(`Hello ${name}`);
-        };
-      };
-      let greeting = A("Elmir");
-      greeting();
-      let greeting1 = A("Musa");
-      greeting1();
-      // TASK 2
-      const createCounter = function (count) {
-        function counter() {
-          return count++;
-        }
-        return counter;
-      };
-      // TASK 3
-      const myCounter = createCounter(13);
-      console.log(myCounter());
-      myCounter();
-      myCounter();
-      myCounter();
-      myCounter();
-      console.log(myCounter());
-      // TASK 4
-      const B = function (number1) {
-        function C(number2) {
-          return number1 * number2;
-        }
-        return C;
-      };
-      let result = B(13);
-      console.log(result(5));
-      console.log(result(6));
-      // TASK 5
-      function constVowels(str) {
-        const vowels = "aıoueəiöüAIOUEƏİÖÜ";
-
-        const vowelArray = str.split("").filter((AEI) => vowels.includes(AEI));
-
-        return vowelArray.length;
+      // Task 1 ----------------------------------------------------------------------------------------------------------------------------
+      let name = "Global";
+      function printName() {
+        let name = "Local";
+        console.log(name);
       }
-      console.log(constVowels("Elmir"));
-      // TASK 6
-      const isPalindrome = (str) => {
-        let reversed = str.split("").reverse().join("");
-        return str === reversed;
+      printName();
+      console.log(name); // Outputs: Global
+      // Task 2 ----------------------------------------------------------------------------------------------------------------------------
+      // function foo() {
+      //   console.log("Foo!");
+
+      //   function bar() {
+      //     console.log("Bar!");
+      //   }
+      //   return bar;
+      // }
+      // let netice = foo();
+      // netice(); // Outputs: Bar!
+      // Task 3 ----------------------------------------------------------------------------------------------------------------------------
+      function foo1() {
+        console.log("Foo!");
+
+        let bar = function () {
+          console.log("Bar!");
+          return 1001;
+        };
+        return bar;
+      }
+      let result = foo1(); // burada foo1 funksiyasını çağırır və daxilindəkini resulta mənimsədir
+      let netice = result(); // burada isə result funksiyası yəni foonun daxilindəki bar funksiyası mənimsədildiyinə görə o çağırılır və return 1001 neticeye menimsedilir.
+      console.log(netice); // Outputs: 1001
+      // Task 4 ----------------------------------------------------------------------------------------------------------------------------
+      function innerFn() {
+        let x = 10;
+
+        function outerFn() {
+          const y = 11;
+          return x * y; //
+        }
+        return outerFn(); //
+      }
+      let result2 = innerFn(); // innerFn funksiyası çağırılır və daxilindəki ikinci funksiyanın returnu result2 yə mənimsədilir.
+      console.log(result2); // Outputs: 110
+      // Task 5 ----------------------------------------------------------------------------------------------------------------------------
+      console.log(a); // burada a dəyişəni undefined olaraq görünecek.
+      var a = 10;
+      // Task 6 ----------------------------------------------------------------------------------------------------------------------------
+
+      // myFunction(); //burada funksiyanı çağırmaq mümkündür.
+      var myFunction = function () {
+        console.log("test");
       };
-      console.log(isPalindrome("level"));
-      console.log(isPalindrome("test"));
+      // Task 7 ----------------------------------------------------------------------------------------------------------------------------
+      const oddNumber = function () {
+        return arr.filter(function (num) {
+          return num % 2 !== 0;
+        });
+      };
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      console.log(oddNumber(arr)); // Outputs: [1, 3, 5, 7, 9]
+      // Task 8 ----------------------------------------------------------------------------------------------------------------------------
+      const bNumber = function () {
+        return arr.filter(function (num) {
+          return num % 2 === 0;
+        });
+      };
+      console.log(bNumber(arr)); // Outputs: [2, 4, 6, 8, 10]
+      // Task 9 ----------------------------------------------------------------------------------------------------------------------------
+      function removeDuplicates(array) {
+        return array.filter(function (num, index) {
+          if (array.indexOf(num) == index) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      }
+
+      let inputArray = [1, 2, 2, 3, 4, 4, 5];
+      console.log(`Array without duplicates: ${removeDuplicates(inputArray)}`);
     </script>
   </body>
 </html>
