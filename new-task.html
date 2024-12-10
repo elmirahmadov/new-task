@@ -8,50 +8,118 @@
   <body>
     <script>
       // Task 1 ----------------------------------------------------------------------------------------------------------------------------
-      const person = {
-        name: "John",
-        age: 30,
-        greet: function () {
-          console.log(
-            `Hello, my name is ${this.name}. I am ${this.age} years old.`
-          );
-        },
-      };
-      person.greet(); // burada həm name həmdə age görünecek.
+      const numbers = [1, 2, 3, 4, 5]; //
+      const [first, second, ...rest] = numbers;
+      console.log(first); // Output: 1
+      console.log(second); // Output: 2
+      console.log(rest); // Output: [3, 4, 5]
       // Task 2 ----------------------------------------------------------------------------------------------------------------------------
-      const companies = [
-        { name: "Whelp", category: "Development", start: 2002, end: 2021 },
-        { name: "ByQr", category: "Finance", start: 1998, end: 2023 },
-        { name: "Marandi", category: "Design", start: 2012, end: 2022 },
-        { name: "Kapital", category: "Technology", start: 1992, end: 2015 },
-        { name: "Pasha", category: "Retail", start: 1999, end: 2005 },
-        { name: "Rabite", category: "Finance", start: 2006, end: 2009 },
-        { name: "Irshad", category: "Development", start: 2004, end: 2021 },
-        { name: "AzGranata", category: "Design", start: 1993, end: 2011 },
-        { name: "AzerSun", category: "Development", start: 1997, end: 2001 },
-        { name: "Veyseloglu", category: "Design", start: 1988, end: 2018 },
-      ];
-      for (let test of companies) {
-        console.log(test.name, test.category, test.start, test.end);
-      }
+      const car = {
+        make: "Toyota",
+        model: "Camry",
+        model1: {
+          tile: "Mercedes",
+        },
+        year: 2020,
+        color: "Red",
+      };
+      const {
+        make,
+        model,
+        year,
+        color,
+        model1: { tile },
+      } = car;
+
+      console.log(make); // Output: Toyota
+      console.log(model); // Output: Camry
+      console.log(year); // Output: 2020
+      console.log(color); // Output: Red
+      console.log(tile); // Output: Mercedes
+
       // Task 3 ----------------------------------------------------------------------------------------------------------------------------
-      const B = companies.map(
-        (element) => `${element.name}-${element.end - element.start}`
-      );
-      console.log(B);
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.greet = function () {
+        console.log(
+          `Hello, my name is ${this.name}. I am ${this.age} years old.`
+        );
+      };
+      const john = new Person("John", 30);
+      john.greet(); // Output: Hello, my name is John. I am 30 years old.
       // Task 4 ----------------------------------------------------------------------------------------------------------------------------
-      const employee = {
+      const user = {
         name: "John Doe",
         age: 30,
-        adress: {
-          street: "123 Main St",
-          city: "New York",
-          state: "NY",
-          zip: "12345",
-        },
       };
-      console.log(employee.name);
-      console.log(employee.adress.street);
+      const { name: userName, age, country = "unknown" } = user;
+      console.log(userName); // Output: John Doe
+      console.log(age); // Output: 30
+      console.log(country); // Output: unknown
+      // Task 5 ----------------------------------------------------------------------------------------------------------------------------
+      const data = {
+        errors: [
+          {
+            status: "403",
+            source: { pointer: "/data/attributes/secretPowers" },
+            detail: "Editing secret powers is not authorized on Sundays.",
+          },
+          {
+            status: "422",
+            source: { pointer: "/data/attributes/volume" },
+            detail: "Volume does not, in fact, go to 11.",
+          },
+          {
+            status: "500",
+            source: { pointer: "/data/attributes/reputation" },
+            title: "The backend responded with an error",
+            detail: "Reputation service not responding after three requests.",
+          },
+          {
+            status: "403",
+            source: { pointer: "/data/attributes/secretPowers" },
+            detail: "Duplicate error with the same pointer and status.",
+          },
+          {
+            status: "999",
+            source: { pointer: "/data/attributes/invalid" },
+            detail: "This is an invalid status error.",
+          },
+        ],
+      }; // output {id: '403', status: '403', source: {…}, detail: 'Duplicate error with the same pointer and status.'}
+
+      const result = Object.entries(data.errors);
+      const array1 = [];
+      console.log(result);
+      for (let el of result) {
+        const elID = el[0];
+        const elObject = el[1];
+
+        const data1 = {
+          id: elID,
+          ...elObject,
+        };
+        array1.push(data1);
+      }
+
+      console.log(array1);
+      // Task 6 ----------------------------------------------------------------------------------------------------------------------------
+      array1.map((el) => {
+        return el.status == 999 ? console.log("Error 999 detected", el) : "";
+      });
+      // Task 7 ----------------------------------------------------------------------------------------------------------------------------
+      array1.map((el) => {
+        return el.source.pointer.includes("secretPowers")
+          ? console.log(el.source.pointer.replace("secretPowers", "Baku"))
+          : "";
+      });
+      // Task 8 ----------------------------------------------------------------------------------------------------------------------------
+      const total = array1.reduce((sum, el) => {
+        return sum + parseInt(el.status);
+      }, 0);
+      console.log("Total status codes:", total);
     </script>
   </body>
 </html>
