@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Bank</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <span class="logo">EB</span>
+        <span class="logo-text">- Bank</span>
+      </div>
+      <div class="auth-links" id="auth-links">
+        <button class="auth-button" onclick="showLoginForm()" id="login-btn">
+          Sign In
+        </button>
+        <button class="auth-button" onclick="showSignupForm()" id="signup-btn">
+          Register
+        </button>
+      </div>
+      <div class="user-info" id="user-info" style="display: none">
+        <span id="user-balance" style="margin-right: 10px">$0</span>
+        <span id="user-name"></span>
+        <button class="auth-button" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="main-container">
+        <div class="buttons-container">
+          <button class="main-button" onclick="showDepositForm()">
+            Add Balance
+          </button>
+          <button class="main-button" onclick="showWithdrawForm()">
+            Check Balance
+          </button>
+          <button class="main-button" onclick="showHistory()">
+            History Bank
+          </button>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <h3 id="card-name">Kapital Bank</h3>
+            <p id="card-number">4169 7377 5566 7788</p>
+            <p id="card-expiry">12/33</p>
+            <p id="card-cvc">202</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <p>
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+905555555555">+90 555 555 55 55</a>
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@ebank.com">info@ebank.com</a>
+          </p>
+        </div>
+        <div class="footer-right">
+          <a href="https://www.instagram.com" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.tiktok.com" target="_blank"
+            ><i class="fab fa-tiktok"></i
+          ></a>
+          <a href="https://www.youtube.com" target="_blank"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a href="https://www.facebook.com" target="_blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="https://github.com" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <div id="history-modal" class="modal-history">
+      <div class="modal-history-content">
+        <h2>Bank History</h2>
+        <button onclick="closeHistory()">Close</button>
+      </div>
+    </div>
+
+    <div id="login-form" class="modal">
+      <div class="modal-content">
+        <h2>Sign İn</h2>
+        <label for="login-email">Email:</label>
+        <input
+          type="email"
+          id="login-email"
+          placeholder="Enter your email address"
+          required
+        />
+        <label for="login-password">Password:</label>
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Enter your password"
+          required
+        />
+        <button onclick="login()">Sign İn</button>
+        <span class="close" onclick="closeLoginForm()">&times;</span>
+      </div>
+    </div>
+
+    <div id="signup-form" class="modal">
+      <div class="modal-content">
+        <h2>Register</h2>
+        <label for="signup-fullname">Fullname:</label>
+        <input
+          type="text"
+          id="signup-fullname"
+          placeholder="Enter your first and last name"
+          required
+        />
+        <label for="signup-email">Email:</label>
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="Enter your email address"
+          required
+        />
+        <label for="signup-password">Password:</label>
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Enter your password"
+          required
+        />
+        <button onclick="signup()">Register</button>
+        <span class="close" onclick="closeSignupForm()">&times;</span>
+      </div>
+    </div>
+
+    <div id="deposit-modal" class="modal">
+      <div class="modal-content">
+        <h2>Add Balance</h2>
+        <label for="deposit-amount">Amount to be loaded ($):</label>
+        <input type="number" id="deposit-amount" placeholder="Enter quantity" />
+        <button onclick="deposit()">Send</button>
+        <button class="close-1" onclick="closeModal('deposit-modal')">
+          &times;
+        </button>
+      </div>
+    </div>
+
+    <div id="withdraw-modal" class="modal">
+      <div class="modal-content">
+        <h2>Check Balance</h2>
+        <label for="withdraw-amount">Amount to be withdrawn ($):</label>
+        <input
+          type="number"
+          id="withdraw-amount"
+          placeholder="Enter quantity"
+        />
+        <button onclick="withdraw()">Send</button>
+        <button class="close-1" onclick="closeModal('withdraw-modal')">
+          &times;
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="bank.js"></script>
+  </body>
+</html>
