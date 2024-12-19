@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <script>
+      // task 1
+      const currentDate = new Date().getDate();
+      const currentYear = new Date().getFullYear();
+      const currentMonth = new Date().getMonth() + 1;
+      const currentWeek = new Date().getDay();
+      alert(
+        `Year: ${currentYear}, Month: ${currentMonth}, Date: ${currentDate}, Weekday: ${currentWeek}`
+      );
+      // task 2
+      const userInput = prompt("Enter data in YYYY-MM-DD format");
+
+      const countDays = () => {
+        const userData = new Date(userInput);
+
+        if (isNaN(userData)) {
+          alert("Wrong input");
+          return;
+        }
+        const currentDate = new Date();
+        const difference = currentDate - userData;
+        return Math.round(difference / (1000 * 60 * 60 * 24));
+      };
+
+      alert(countDays());
+      // task 3
+      const userInput1 = prompt("User1 - Enter data in YYYY-MM-DD format");
+      const userInput2 = prompt("User2 - Enter data in YYYY-MM-DD format");
+
+      const countDaysDifference = () => {
+        const date1 = new Date(userInput1);
+        const date2 = new Date(userInput2);
+        if (isNaN(date1) && isNaN(date2)) {
+          alert("Wrong date entered");
+          return;
+        }
+        const difference = date1 - date2;
+        return Math.round(difference / (1000 * 60 * 60 * 24));
+      };
+
+      const resultElement = document.createElement("h2");
+      resultElement.innerHTML = `The difference is ${countDaysDifference()} day`;
+      document.body.appendChild(resultElement);
+      // task 4
+      const userInput3 = prompt("User1 - Enter data in HH:MM:SS format");
+      const userInput4 = prompt("User2 - Enter data in HH:MM:SS format");
+
+      const countTimeDifference = () => {
+        const time1 = new Date(`1970-01-01T${userInput3}`);
+        const time2 = new Date(`1970-01-01T${userInput4}`);
+
+        if (isNaN(time1) && isNaN(time2)) {
+          alert("Wrong time");
+          return;
+        }
+        const difference = time1 - time2;
+
+        const totalSeconds = Math.floor(difference / 1000);
+
+        const hour = Math.floor(totalSeconds / 3600);
+
+        const min = Math.floor((totalSeconds % 3600) / 60);
+
+        const second = totalSeconds % 60;
+
+        return `Time difference is ${hour} hours, ${min} minutes, and ${second} seconds.`;
+      };
+
+      const element = document.createElement("span");
+      element.innerHTML = `${countTimeDifference()}`;
+      document.body.appendChild(element);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+  </style>
+  <body>
+    <button id="clickBtn">Click Me</button>
+    <p id="text">Original Text</p>
+    <hr />
+    <hr />
+    <hr />
+    <div id="box"></div>
+    <hr />
+    <hr />
+    <hr />
+    <button id="dblClickBtn">Double Click Me</button>
+    <p id="text">Original Text</p>
+    <script>
+      //Task 1
+      const findEL = document.querySelector("#text");
+      const findBtn = document.querySelector("#clickBtn");
+
+      findBtn.addEventListener("click", function () {
+        findEL.innerText = "Hello, world!";
+      });
+
+      //Task 2
+      const divBlue = document.querySelector("#box");
+      divBlue.addEventListener("mouseover", function () {
+        divBlue.style.background = "red";
+      });
+      divBlue.addEventListener("mouseout", function () {
+        divBlue.style.background = "green";
+      });
+
+      //Task 3
+      const findDblClickBtn = document.querySelector("#dblClickBtn");
+      findDblClickBtn.addEventListener("dblclick", function () {
+        findEL.innerText = "Goodbye, world!";
+      });
+
+      //Task 4
+    </script>
+  </body>
+</html>

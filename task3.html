@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+  </head>
+  <body>
+    <p id="intro">Original content</p>
+    <hr />
+    <hr />
+    <hr />
+    <div class="box">Original Box 1</div>
+    <div class="box">Original Box 2</div>
+    <div class="box1">Original Box 3</div>
+    <div class="box">Original Box 4</div>
+    <hr />
+    <hr />
+    <hr />
+    <ul>
+      <li>Original Item 1</li>
+      <li>Original Item 2</li>
+      <li>Original Item 3</li>
+    </ul>
+    <hr />
+    <hr />
+    <hr />
+    <h2>Original Title</h2>
+    <h2>Another Title</h2>
+    <hr />
+    <hr />
+    <hr />
+    <p id="welcomeText">Hello, Visitor!</p>
+    <hr />
+    <hr />
+    <hr />
+    <div id="itemList">No items available</div>
+    <hr />
+    <hr />
+    <hr />
+    <img
+      id="myImage"
+      src="https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?cs=srgb&dl=pexels-jonaskakaroto-736230.jpg&fm=jpg"
+      alt="Original Image"
+      width="200"
+    />
+    <button onclick="changeImage()">Change Image</button>
+    <hr />
+    <hr />
+    <hr />
+    <a id="myLink" href="https://www.google.com" target="_blank"
+      >Go to Google</a
+    >
+    <button onclick="changeLink()">Change Link</button>
+    <hr />
+    <hr />
+    <hr />
+    <input type="text" id="myInput" placeholder="Enter your name" />
+    <button onclick="changePlaceholder()">Change Placeholder</button>
+    <hr />
+    <hr />
+    <hr />
+    <p id="myParagraph">This is a styled paragraph.</p>
+    <button onclick="changeStyles()">Apply Styles</button>
+    <hr />
+    <hr />
+    <hr />
+    <div
+      id="myBox"
+      style="
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        text-align: center;
+        line-height: 100px;
+      "
+    >
+      Style me!
+    </div>
+    <button onclick="styleBox()">Style Box</button>
+    <script>
+      //Task 1
+
+      let element = document.getElementById("intro");
+      element.innerText = "Updated content via innerHTML";
+
+      //Task 2
+
+      const boxSelector = document.querySelectorAll(".box");
+      boxSelector.forEach((element) => {
+        element.innerText = "This is a box";
+      });
+
+      //Task 3
+      let lists = document.getElementsByTagName("li");
+      Array.from(lists).forEach((element) => {
+        element.innerText = "This is a item";
+      });
+
+      //Task 4
+
+      const title = document.querySelector("h2");
+      title.innerText = "Title Updated";
+      //Task 5
+
+      const el = document.querySelector("#welcomeText");
+      el.innerText = "Welcome to my website";
+      //Task 6
+
+      let list1 = document.querySelector("#itemList");
+      list1.innerText = "Salam";
+      //Task 7
+
+      function changeImage() {
+        const image = document.getElementById("myImage");
+        image.src =
+          "https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+      }
+      //Task 8
+      function changeLink() {
+        const link = document.getElementById("myLink");
+        link.href = "https://www.youtube.com";
+        link.innerHTML = "Youtube";
+      }
+      //Task 9
+      function changePlaceholder() {
+        const input = document.getElementById("myInput");
+        input.placeholder = "New Placeholder";
+      }
+      //Task 10
+      function changeStyles() {
+        const paragraph = document.getElementById("myParagraph");
+        paragraph.style.color = "red";
+        paragraph.style.fontSize = "24px";
+        paragraph.style.fontWeight = "bold";
+      }
+      //Task 11
+      function styleBox() {
+        const box = document.getElementById("myBox");
+        box.style.backgroundColor = "green";
+        box.style.color = "white";
+      }
+    </script>
+  </body>
+</html>
