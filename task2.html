@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Car {
+        constructor(brand, model, fuel, isEngineOn) {
+          this.brand = brand;
+          this.model = model;
+          this.fuel = fuel;
+          this.isEngineOn = false;
+        }
+        starending() {
+          if (this.isEngineOn) {
+            console.log(`${this.brand} , ${this.model} engine is already on`);
+          } else if (this.fuel > 0) {
+            console.log(`${this.brand} , ${this.model} is starting`);
+          } else {
+            console.log(
+              `${this.brand} , ${this.model} cannot start fuel is empty.`
+            );
+          }
+        }
+
+        stopending() {
+          if (this.isEngineOn) {
+            this.isEngineOn = false;
+            console.log(`${this.brand} , ${this.model} is stopping`);
+          } else {
+            console.log(`${this.brand} , ${this.model} engine is already off`);
+          }
+        }
+      }
+      const myCar = new Car("Toyota", "Camry", 0);
+      myCar.starending();
+      myCar.stopending();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+  </head>
+  <style>
+    /* -------------------------------------------------------------------- */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1,
+    p {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+    battery {
+      font-weight: bold;
+    }
+    /* -------------------------------------------------------------------- */
+  </style>
+  <body>
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <h1>Task</h1>
+    <button>Get Battery Level</button>
+    <p>Battery Level: <battery></battery>%</p>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <h2>Geolocation</h2>
+    <button id="buttonLocation">Get Current Position</button>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <h3>Link</h3>
+    <button id="buttonHref">Visit Google</button>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <h4>History</h4>
+    <button onclick="goForward()">Go Forward</button>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <h5>User Agent</h5>
+    <button id="buttonUser">Get User Agent</button>
+    <p id="textUser"></p>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <p>Reload Page</p>
+    <button onclick="window.location.reload()">Reload</button>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <p>Online Status</p>
+    <button id="buttonStatus">Check Status</button>
+    <p id="textStatus"></p>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- /* -------------------------------------------------------------------- */ -->
+    <p>Home Bing</p>
+    <button id="buttonHome">Go Home</button>
+    <!-- /* -------------------------------------------------------------------- */ -->
+
+    <!-- SCRİPT -->
+    <script>
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      const battery = document.querySelector("battery");
+      const button = document.querySelector("button");
+      button.addEventListener("click", function () {
+        navigator.getBattery().then(function (batteryLevel) {
+          battery.innerHTML = batteryLevel.level * 100;
+        });
+      });
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      function show() {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log(`Latitude :` + position.coords.latitude);
+          console.log(`Longitude :` + position.coords.longitude);
+        });
+      }
+
+      buttonLocation.addEventListener("click", show);
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      document
+        .querySelector("#buttonHref")
+        .addEventListener("click", function () {
+          window.location.href = "https://www.google.com";
+        });
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      function goForward() {
+        window.history.forward();
+      }
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      const buttonUser = document.querySelector("#buttonUser");
+      buttonUser.addEventListener("click", function () {
+        textUser.innerHTML = window.navigator.userAgent;
+      });
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      const buttonStatus = document.querySelector("#buttonStatus");
+      const textStatus = document.querySelector("#textStatus");
+      buttonStatus.addEventListener("click", function () {
+        textStatus.innerHTML = window.navigator.onLine ? "Online" : "Offline";
+      });
+      // <!-- /* -------------------------------------------------------------------- */ -->
+
+      // <!-- /* -------------------------------------------------------------------- */ -->
+      const buttonHome = document.querySelector("#buttonHome");
+      buttonHome.addEventListener("click", function () {
+        window.open("https://www.bing.com/");
+      });
+      // <!-- /* -------------------------------------------------------------------- */ -->
+    </script>
+  </body>
+</html>
