@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Arama</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #141414;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header input {
+        width: 50%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .MovieDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .movie-card {
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .movie-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+      }
+      .movie-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+      .movie-card h2 {
+        font-size: 20px;
+        margin: 10px 0;
+        color: #f5c518;
+      }
+      .movie-card p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #ccc;
+        margin: 5px 0;
+      }
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #888;
+      }
+      @media (max-width: 600px) {
+        .MovieDiv {
+          flex-direction: column;
+        }
+        .header input {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Netflix Tarzı Film Arama</h1>
+        <input
+          type="text"
+          id="movieTitle"
+          placeholder="Film ara..."
+          oninput="fetchMovie()"
+        />
+      </div>
+      <div id="Movie" class="MovieDiv"></div>
+    </div>
+    <script>
+      const API_KEY = "e76951c6";
+
+      function fetchMovie() {
+        const movieTitle = document.getElementById("movieTitle").value.trim();
+        const movieDiv = document.getElementById("Movie");
+
+        if (!movieTitle) {
+          movieDiv.innerHTML = "";
+          return;
+        }
+
+        const BASE_URL = `https://www.omdbapi.com/?t=${movieTitle}&apikey=${API_KEY}`;
+
+        fetch(BASE_URL)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.Response === "True") {
+              const movieHTML = `
+              <div class="movie-card">
+                <img src="${data.Poster}" alt="${data.Title}">
+                <h2>${data.Title}</h2>
+                <p>${data.Plot}</p>
+                <p><strong>IMDB Puanı:</strong> ${data.imdbRating}</p>
+                <p><strong>Vizyon Yılı:</strong> ${data.Year}</p>
+                <p><strong>Kullanıcı Puanı:</strong> ${data.Metascore}</p>
+              </div>
+              `;
+              movieDiv.innerHTML = movieHTML;
+            } else {
+              movieDiv.innerHTML = `<h2>Film Bulunamadı</h2>`;
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching movie data:", error);
+            movieDiv.innerHTML = `<h2>Bir hata oluştu. Lütfen tekrar deneyin.</h2>`;
+          });
+      }
+    </script>
+  </body>
+</html>
